@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio von Emanuele Pintarelli – Cloud Engineer und Digital Business & AI Student an der BFH.">
+  <title>Emanuele Pintarelli | Portfolio</title>
+
+  <!-- Zentrales externes Stylesheet -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <!-- Skip to content Link -->
+  <a class="skip-link" href="#main-content">Direkt zum Inhalt springen</a>
+
+  <!-- Kopfbereich & Globale Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">&lt;EP/&gt;</a>
+
+      <div class="header-actions">
+        <button id="theme-toggle" class="btn-icon" type="button" title="Design wechseln">🌙</button>
+        <button id="menu-toggle" class="menu-toggle" type="button">Menü</button>
+      </div>
+
+      <nav class="site-nav" id="main-nav">
+        <ul class="nav-list">
+          <li><a href="#about">Über mich</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projekte</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hauptinhalt -->
+  <main id="main-content">
+
+    <!-- 1. Über mich -->
+    <section id="about" class="section hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="subtitle">Cloud Engineer / Operator &amp; B.Sc. Digital Business &amp; AI (BFH)</p>
+          <h1>Hi, ich bin <span class="accent">Emanuele Pintarelli</span>.</h1>
+          <p>
+            Ich entwerfe skalierbare Cloud-Infrastrukturen, automatisiere Prozesse und verbinde 
+            moderne Cloud-Architektur mit AI-Technologien.
+          </p>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">Projekte ansehen</a>
+            <a href="#contact" class="btn btn-secondary">Kontakt</a>
+          </div>
+        </div>
+
+        <!-- Kurzprofil mit Beschreibungsliste -->
+        <aside class="profile-card">
+          <h2>Kurzprofil</h2>
+          <dl class="profile-list">
+            <dt>Rolle</dt>
+            <dd>Cloud Engineer / Operator</dd>
+
+            <dt>Höhere Fachschule</dt>
+            <dd>Dipl. Wirtschaftsinformatiker HF (professional Bachelor)</dd>
+            
+            <dt>Bachelor Studium</dt>
+            <dd>B.Sc. Digital Business and AI (BFH)</dd>
+
+            <dt>Fokus</dt>
+            <dd>Cloud Native, Automation &amp; AI</dd>
+
+            <dt>Standort</dt>
+            <dd>Schweiz</dd>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 2. Skills & D3.js Diagramm -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2>Tech-Stack &amp; Skills</h2>
+        <p>Interaktive Übersicht meiner Technologien und GitHub-Sprachen (via D3.js):</p>
+        
+        <div id="skills-chart" class="chart-box">
+          <p>Lade Skill-Diagramm...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Projekte mit Filter & Pagination -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Meine Projekte</h2>
+        <p>Projekte aus meinem BFH-Studium und meiner Praxis als Cloud Engineer.</p>
+
+        <div class="filter-bar">
+          <button type="button" class="filter-btn active" data-filter="all">Alle Projekte</button>
+          <button type="button" class="filter-btn" data-filter="bfh">BFH Studium</button>
+          <button type="button" class="filter-btn" data-filter="cloud">Cloud &amp; Praxis</button>
+        </div>
+
+        <div id="projects-grid" class="projects-grid">
+          <p>Lade Projekte von GitHub...</p>
+        </div>
+
+        <nav id="projects-pagination" class="pagination"></nav>
+      </div>
+    </section>
+
+    <!-- 4. Kontaktformular -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Kontakt</h2>
+        <p>Hast du Fragen zu meinen Projekten oder meinem Studium? Schreib mir eine Nachricht.</p>
+
+        <form id="contact-form" class="contact-form" novalidate>
+          <div class="form-group">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" autocomplete="name" required minlength="2" placeholder="Dein Name" />
+            <span id="name-error" class="error-msg"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-Mail *</label>
+            <input type="email" id="email" name="email" autocomplete="email" required placeholder="name@beispiel.ch" />
+            <span id="email-error" class="error-msg"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Betreff *</label>
+            <select id="subject" name="subject" required>
+              <option value="" disabled selected>Bitte wählen...</option>
+              <option value="cloud">Cloud Engineering</option>
+              <option value="bfh">BFH Studium</option>
+              <option value="other">Sonstiges</option>
+            </select>
+            <span id="subject-error" class="error-msg"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Nachricht *</label>
+            <textarea id="message" name="message" rows="5" required minlength="10" placeholder="Deine Nachricht..."></textarea>
+            <span id="message-error" class="error-msg"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Nachricht senden</button>
+          <p id="form-status" class="form-status"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Fusszeile -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Emanuele Pintarelli – Modul Web Engineering (BFH)</p>
+      <ul class="footer-links">
+        <li><a href="https://github.com/Juventinooo0911" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.bfh.ch" target="_blank" rel="noopener">BFH</a></li>
+        <li><a href="https://www.nexplore.ch" target="_blank" rel="noopener">Nexplore AG</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- JavaScript am Ende des Body einbinden -->
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
