@@ -1,0 +1,275 @@
+/* ==========================================================================
+   1. FARBVARIABLEN (Dracula Dark Theme & Light Mode)
+   Siehe VL 1, Folie 70 & VL 2, Folie 53
+   ========================================================================== */
+:root {
+  --bg-primary: #282a36;       /* Haupthintergrund (Dracula Background) */
+  --bg-secondary: #44475a;     /* Karten- & Box-Hintergrund (Current Line) */
+  --bg-header: rgba(40, 42, 54, 0.95);
+  --text-primary: #f8f8f2;     /* Haupttext (Foreground) */
+  --text-muted: #a9b1d6;       /* Dezenter Text / Untertitel */
+  --accent-purple: #bd93f9;    /* Primärfarbe (Dracula Purple) */
+  --accent-cyan: #8be9fd;      /* Zweitfarbe (Dracula Cyan) */
+  --accent-green: #50fa7b;     /* Erfolg / Valide (Dracula Green) */
+  --accent-pink: #ff79c6;      /* Highlights (Dracula Pink) */
+  --accent-red: #ff5555;       /* Fehler / Ungültig (Dracula Red) */
+  --border-color: #6272a4;     /* Rahmenfarbe (Dracula Comment) */
+  --radius: 8px;               /* Einheitliche abgerundete Ecken */
+}
+
+/* Helles Design (wird aktiv, wenn im HTML data-theme="light" steht) */
+html[data-theme="light"] {
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --bg-header: rgba(248, 249, 250, 0.95);
+  --text-primary: #212529;
+  --text-muted: #495057;
+  --accent-purple: #6f42c1;
+  --accent-cyan: #0dcaf0;
+  --accent-green: #198754;
+  --accent-pink: #d63384;
+  --accent-red: #dc3545;
+  --border-color: #dee2e6;
+}
+
+/* ==========================================================================
+   2. GRUNDSTIL & BOX-MODEL (VL 1, Folie 62-65 & 69)
+   ========================================================================== */
+* {
+  box-sizing: border-box; /* Padding & Border werden in die Breite eingerechnet */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* Sanftes Scrollen bei Klick auf Menü-Links */
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Flüssiger Container (Fluid Grid, VL 2, Folie 47) */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section {
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Typografie & Überschriften (VL 1, Folie 54-55) */
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  color: var(--accent-purple);
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Flexible Bilder (VL 2, Folie 48) */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Skip-Link: Normal versteckt, bei Tab-Taste sichtbar (VL 1, Folie 57) */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background-color: var(--accent-purple);
+  color: #282a36;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border-radius: var(--radius);
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ==========================================================================
+   3. KOPFBEREICH & NAVIGATION MIT FLEXBOX (VL 2, Folie 56-61)
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-header);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 0;
+  z-index: 100;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--accent-purple);
+  font-family: monospace;
+}
+
+.logo:hover {
+  text-decoration: none;
+  color: var(--accent-pink);
+}
+
+.nav-list {
+  list-style: none; /* Entfernt die Aufzählungspunkte der <ul> */
+  display: flex;    /* Legt die <li>-Elemente horizontal nebeneinander */
+  gap: 1.5rem;      /* 1.5rem Abstand zwischen den Menüpunkten */
+}
+
+.nav-list a {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.nav-list a:hover {
+  color: var(--accent-purple);
+  text-decoration: none;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Menü-Button ist auf dem Desktop ausgeblendet (wird erst bei < 768px sichtbar) */
+.menu-toggle {
+  display: none;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   4. HERO / ÜBER MICH MIT CSS GRID (VL 2, Folie 62-66)
+   ========================================================================== */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Links 2 Drittel (2fr), rechts 1 Drittel (1fr) */
+  gap: 2rem;
+  align-items: center;
+}
+
+.subtitle {
+  color: var(--accent-cyan);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+.accent {
+  color: var(--accent-purple);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons (VL 1, Folie 78) */
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid transparent;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background-color: var(--accent-purple);
+  color: #282a36;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border-color: var(--accent-purple);
+}
+
+.btn-icon {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Kurzprofil-Box (<aside> & <dl>, VL 1, Folie 54 & 56) */
+.profile-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.profile-card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.profile-list dt {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 0.75rem;
+}
+
+.profile-list dd {
+  font-weight: 600;
+  color: var(--accent-green);
+}
