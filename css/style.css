@@ -1,6 +1,5 @@
 /* ==========================================================================
    1. FARBVARIABLEN (Dracula Dark Theme & Light Mode)
-   Siehe VL 1, Folie 70 & VL 2, Folie 53
    ========================================================================== */
 :root {
   --bg-primary: #282a36;       /* Haupthintergrund (Dracula Background) */
@@ -25,7 +24,7 @@ html[data-theme="light"] {
   --text-primary: #212529;
   --text-muted: #495057;
   --accent-purple: #6f42c1;
-  --accent-cyan: #0dcaf0;
+  --accent-cyan: #0b7285;
   --accent-green: #198754;
   --accent-pink: #d63384;
   --accent-red: #dc3545;
@@ -33,7 +32,7 @@ html[data-theme="light"] {
 }
 
 /* ==========================================================================
-   2. GRUNDSTIL & BOX-MODEL (VL 1, Folie 62-65 & 69)
+   2. GRUNDSTIL & BOX-MODEL
    ========================================================================== */
 * {
   box-sizing: border-box; /* Padding & Border werden in die Breite eingerechnet */
@@ -52,7 +51,7 @@ body {
   line-height: 1.6;
 }
 
-/* Flüssiger Container (Fluid Grid, VL 2, Folie 47) */
+/* Flüssiger Container */
 .container {
   width: 90%;
   max-width: 1100px;
@@ -64,7 +63,7 @@ body {
   border-bottom: 1px solid var(--border-color);
 }
 
-/* Typografie & Überschriften (VL 1, Folie 54-55) */
+/* Typografie & Überschriften */
 h1,
 h2,
 h3 {
@@ -94,14 +93,14 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Flexible Bilder (VL 2, Folie 48) */
+/* Flexible Bilder */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* Skip-Link: Normal versteckt, bei Tab-Taste sichtbar (VL 1, Folie 57) */
+/* Skip-Link: Normal versteckt, bei Tab-Taste sichtbar */
 .skip-link {
   position: absolute;
   top: -100px;
@@ -119,7 +118,7 @@ img {
 }
 
 /* ==========================================================================
-   3. KOPFBEREICH & NAVIGATION MIT FLEXBOX (VL 2, Folie 56-61)
+   3. KOPFBEREICH & NAVIGATION MIT FLEXBOX
    ========================================================================== */
 .site-header {
   position: sticky;
@@ -182,7 +181,7 @@ img {
 }
 
 /* ==========================================================================
-   4. HERO / ÜBER MICH MIT CSS GRID (VL 2, Folie 62-66)
+   4. HERO / ÜBER MICH MIT CSS GRID
    ========================================================================== */
 .hero-grid {
   display: grid;
@@ -210,7 +209,7 @@ img {
   flex-wrap: wrap;
 }
 
-/* Buttons (VL 1, Folie 78) */
+/* Buttons */
 .btn {
   display: inline-block;
   padding: 0.7rem 1.4rem;
@@ -247,7 +246,7 @@ img {
   font-size: 1rem;
 }
 
-/* Kurzprofil-Box (<aside> & <dl>, VL 1, Folie 54 & 56) */
+/* Kurzprofil-Box */
 .profile-card {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -272,4 +271,235 @@ img {
 .profile-list dd {
   font-weight: 600;
   color: var(--accent-green);
+}
+
+/* ==========================================================================
+   5. SKILLS & D3.JS DIAGRAMM-CONTAINER
+   ========================================================================== */
+.chart-box {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  min-height: 220px;
+}
+
+.loading-text {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ==========================================================================
+   6. PROJEKTE: FILTER-BUTTONS, KARTEN-GRID & PAGINATION
+   ========================================================================== */
+.filter-group {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent-purple);
+}
+
+/* Aktiver Filter-Button (Compound Selector) */
+.filter-btn.active {
+  background-color: var(--accent-purple);
+  color: #282a36;
+  border-color: var(--accent-purple);
+  font-weight: 600;
+}
+
+/* 2-spaltiges Grid für die Projekt-Karten auf dem Desktop */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Einzelne Projekt-Karte (wird später per JavaScript eingefügt) */
+.project-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-card h3 {
+  color: var(--accent-cyan);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+
+.badge {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--accent-green);
+}
+
+/* Seitennavigation (Pagination) unter den Projekten */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+/* ==========================================================================
+   7. KONTAKTFORMULAR & VALIDIERUNG
+   ========================================================================== */
+.contact-form {
+  max-width: 650px;
+  margin-top: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+/* Fokus-Zustand beim Reinklicken ins Textfeld */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-purple);
+}
+
+/* Fehler-Styling bei ungültiger Eingabe */
+.form-group input.input-error,
+.form-group select.input-error,
+.form-group textarea.input-error {
+  border-color: var(--accent-red);
+}
+
+.error-message {
+  display: block;
+  color: var(--accent-red);
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  min-height: 1.2rem;
+}
+
+.form-status {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--accent-green);
+}
+
+/* ==========================================================================
+   8. FUSSBEREICH (FOOTER)
+   ========================================================================== */
+.site-footer {
+  padding: 2rem 0;
+  background-color: var(--bg-secondary);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-inner p {
+  margin-bottom: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* ==========================================================================
+   9. RESPONSIVE DESIGN (MEDIA QUERIES FÜR TABLET & MOBILE < 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .hero-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+    
+  }
+
+  /* Mobiler Menü-Button wird eingeblendet */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Navigation klappt auf dem Handy standardmässig zu */
+  .site-nav {
+    display: none;
+    width: 100%;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  /* Wenn JavaScript die Klasse .is-open hinzufügt, wird das Menü sichtbar */
+  .site-nav.is-open {
+    display: block;
+  }
+
+  .nav-list {
+    
+    gap: 0.75rem;
+    flex-direction: column;
+  }
+
+  /* Erlaubt dem Header-Inhalt umzubrechen, wenn das Menü aufklappt */
+  .header-inner {
+    flex-wrap: wrap;
+  }
 }
