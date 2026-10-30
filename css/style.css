@@ -181,7 +181,7 @@ img {
 }
 
 /* ==========================================================================
-   4. HERO / ÜBER MICH MIT CSS GRID
+   4. HERO / ÜBER MICH MIT CSS GRID & PROFILBILD
    ========================================================================== */
 .hero-grid {
   display: grid;
@@ -246,7 +246,7 @@ img {
   font-size: 1rem;
 }
 
-/* Kurzprofil-Box */
+/* Kurzprofil-Box & Profilbild */
 .profile-card {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -254,15 +254,33 @@ img {
   padding: 1.5rem;
 }
 
-.profile-card h2 {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; /* Macht das Bild kreisrund */
+  object-fit: cover;  /* Verhindert Verzerrung bei rechteckigen Fotos */
+  border: 3px solid var(--accent-purple);
+  margin-bottom: 0.75rem;
+  background-color: var(--bg-primary);
+}
+
+.profile-header h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0;
 }
 
 .profile-list dt {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
   text-transform: uppercase;
   margin-top: 0.75rem;
@@ -274,14 +292,44 @@ img {
 }
 
 /* ==========================================================================
-   5. SKILLS & D3.JS DIAGRAMM-CONTAINER
+   5. BERUFSERFAHRUNG & D3.JS DIAGRAMM-CONTAINER
    ========================================================================== */
+.experience-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 3 Stationen nebeneinander auf Desktop */
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.station-period {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-pink);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.station-company {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.skills-chart-wrapper {
+  margin-top: 3rem;
+}
+
+.skills-chart-wrapper h3 {
+  color: var(--accent-cyan);
+}
+
 .chart-box {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
   padding: 1.5rem;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   min-height: 220px;
 }
 
@@ -291,7 +339,7 @@ img {
 }
 
 /* ==========================================================================
-   6. PROJEKTE: FILTER-BUTTONS, KARTEN-GRID & PAGINATION
+   6. AUSBILDUNG & GITHUB: FILTER, KARTEN-GRID & PAGINATION
    ========================================================================== */
 .filter-group {
   display: flex;
@@ -322,14 +370,14 @@ img {
   font-weight: 600;
 }
 
-/* 2-spaltiges Grid für die Projekt-Karten auf dem Desktop */
+/* 2-spaltiges Grid für Karten auf dem Desktop */
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
 }
 
-/* Einzelne Projekt-Karte (wird später per JavaScript eingefügt) */
+/* Einzelne Karte (Beruf, Ausbildung & GitHub-Repos) */
 .project-card {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -343,14 +391,14 @@ img {
 .project-card h3 {
   color: var(--accent-cyan);
   font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .project-meta {
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
-  margin: 1rem 0;
+  margin-top: 1rem;
 }
 
 .badge {
@@ -362,7 +410,21 @@ img {
   color: var(--accent-green);
 }
 
-/* Seitennavigation (Pagination) unter den Projekten */
+/* GitHub Profil-Leiste (über den GitHub-Repos) */
+.github-bar {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Seitennavigation (Pagination) */
 .pagination {
   display: flex;
   justify-content: center;
@@ -467,10 +529,11 @@ img {
     font-size: 2rem;
   }
 
+  /* Alle mehrspaltigen Grids werden auf Mobile einspaltig (1fr) */
   .hero-grid,
+  .experience-grid,
   .projects-grid {
     grid-template-columns: 1fr;
-    
   }
 
   /* Mobiler Menü-Button wird eingeblendet */
@@ -482,6 +545,7 @@ img {
   .site-nav {
     display: none;
     width: 100%;
+    order: 3; /* Schiebt das aufgeklappte Menü unter das Logo und die Buttons */
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: 1px solid var(--border-color);
@@ -493,9 +557,8 @@ img {
   }
 
   .nav-list {
-    
-    gap: 0.75rem;
     flex-direction: column;
+    gap: 0.75rem;
   }
 
   /* Erlaubt dem Header-Inhalt umzubrechen, wenn das Menü aufklappt */

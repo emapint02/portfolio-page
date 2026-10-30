@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio von Emanuele Pintarelli – Cloud Engineer und Digital Business & AI Student an der BFH.">
+  <meta name="description" content="Portfolio von Emanuele Pintarelli – Cloud Engineer und Student B.Sc. Digital Business und AI an der BFH.">
   <title>Emanuele Pintarelli | Portfolio</title>
 
   <!-- Zentrales externes Stylesheet -->
@@ -13,61 +13,72 @@
   <!-- Skip to content Link -->
   <a class="skip-link" href="#main-content">Direkt zum Inhalt springen</a>
 
-  <!-- Kopfbereich & Globale Navigation -->
+  <!-- Kopfbereich und Navigation -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="#" class="logo">&lt;EP/&gt;</a>
+
+      <nav class="site-nav" id="main-nav">
+        <ul class="nav-list">
+          <li><a href="#about">Über mich</a></li>
+          <li><a href="#experience">Berufserfahrung und Skills</a></li>
+          <li><a href="#education">Ausbildungen</a></li>
+          <li><a href="#github">My GitHub</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+      </nav>
 
       <div class="header-actions">
         <button id="theme-toggle" class="btn-icon" type="button" title="Design wechseln">🌙</button>
         <button id="menu-toggle" class="menu-toggle" type="button">Menü</button>
       </div>
-
-      <nav class="site-nav" id="main-nav">
-        <ul class="nav-list">
-          <li><a href="#about">Über mich</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projekte</a></li>
-          <li><a href="#contact">Kontakt</a></li>
-        </ul>
-      </nav>
     </div>
   </header>
 
   <!-- Hauptinhalt -->
   <main id="main-content">
 
-    <!-- 1. Über mich -->
+    <!-- 1. ÜBER MICH -->
     <section id="about" class="section hero">
       <div class="container hero-grid">
         <div class="hero-text">
-          <p class="subtitle">Cloud Engineer / Operator &amp; B.Sc. Digital Business &amp; AI (BFH)</p>
+          <p class="subtitle">Cloud Engineer / Operator und B.Sc. Digital Business und AI (BFH)</p>
           <h1>Hi, ich bin <span class="accent">Emanuele Pintarelli</span>.</h1>
           <p>
             Ich entwerfe skalierbare Cloud-Infrastrukturen, automatisiere Prozesse und verbinde 
-            moderne Cloud-Architektur mit AI-Technologien.
+            moderne Cloud-Native-Architekturen mit Web- und AI-Technologien.
           </p>
           <div class="hero-buttons">
-            <a href="#projects" class="btn btn-primary">Projekte ansehen</a>
-            <a href="#contact" class="btn btn-secondary">Kontakt</a>
+            <a href="#experience" class="btn btn-primary">Beruf und Skills</a>
+            <a href="#education" class="btn btn-secondary">Ausbildung und Arbeiten</a>
           </div>
         </div>
 
-        <!-- Kurzprofil mit Beschreibungsliste -->
+        <!-- Kurzprofil mit Bild und Beschreibungsliste -->
         <aside class="profile-card">
-          <h2>Kurzprofil</h2>
+          <div class="profile-header">
+            <img 
+              src="./assets/images/profilbild.jpg" 
+              alt="Porträt von Emanuele Pintarelli" 
+              class="profile-img">
+            <h2>Kurzprofil</h2>
+          </div>
+
           <dl class="profile-list">
             <dt>Rolle</dt>
             <dd>Cloud Engineer / Operator</dd>
 
             <dt>Höhere Fachschule</dt>
-            <dd>Dipl. Wirtschaftsinformatiker HF (professional Bachelor)</dd>
-            
-            <dt>Bachelor Studium</dt>
-            <dd>B.Sc. Digital Business and AI (BFH)</dd>
+            <dd>Dipl. Wirtschaftsinformatiker HF (HFTM)</dd>
+
+            <dt>Bachelor-Studium</dt>
+            <dd>B.Sc. Digital Business und AI (BFH)</dd>
 
             <dt>Fokus</dt>
-            <dd>Cloud Native, Automation &amp; AI</dd>
+            <dd>Cloud Native, IaC, Automation und AI</dd>
+
+            <dt>Interessen</dt>
+            <dd>3D-Druck und CAD, Tech Stuff, Fussball und Sport</dd>
 
             <dt>Standort</dt>
             <dd>Schweiz</dd>
@@ -76,72 +87,169 @@
       </div>
     </section>
 
-    <!-- 2. Skills & D3.js Diagramm -->
-    <section id="skills" class="section">
+    <!-- 2. BERUFSERFAHRUNG UND TECH-SKILLS -->
+    <section id="experience" class="section">
       <div class="container">
-        <h2>Tech-Stack &amp; Skills</h2>
-        <p>Interaktive Übersicht meiner Technologien und GitHub-Sprachen (via D3.js):</p>
-        
-        <div id="skills-chart" class="chart-box">
-          <p>Lade Skill-Diagramm...</p>
+        <h2>Berufserfahrung und Tech-Skills</h2>
+        <p>Meine bisherigen beruflichen Stationen in der IT und meine technischen Schwerpunkte aus der Praxis:</p>
+
+        <div class="experience-grid">
+          <article class="project-card">
+            <div>
+              <span class="station-period">Aktuell</span>
+              <h3>Cloud Operations Engineer</h3>
+              <p class="station-company">Nexplore AG</p>
+              <p>
+                Aufbau, Standardisierung und Betrieb von Cloud-Native-Plattformen (Azure / AKS), 
+                Automatisierung via Infrastructure as Code sowie GitOps-Pipelines.
+              </p>
+            </div>
+            <div class="project-meta">
+              <span class="badge">Kubernetes / AKS</span>
+              <span class="badge">Terraform</span>
+              <span class="badge">Argo CD</span>
+              <span class="badge">Azure</span>
+              <span class="badge">Grafana Monitoring</span>
+              <span class="badge">CI/CD</span>
+              <span class="badge">Holakratie</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div>
+              <span class="station-period">Vorherige Station</span>
+              <h3>System und DevOps Engineer</h3>
+              <p class="station-company">Dynasoft AG</p>
+              <p>
+                Containerisierung von Applikationen mit Docker, Aufbau zentraler Monitoring-Stacks 
+                (Prometheus, Grafana, Loki) sowie Linux- und Netzwerk-Engineering.
+              </p>
+            </div>
+            <div class="project-meta">
+              <span class="badge">Docker</span>
+              <span class="badge">Linux</span>
+              <span class="badge">Prometheus und Grafana</span>
+              <span class="badge">Ansible Automatisierung</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div>
+              <span class="station-period">Lehrabgang</span>
+              <h3>Young Professional</h3>
+              <p class="station-company">Swisscom (Schweiz) AG</p>
+              <p>
+                Betrieb von DCS+ Infrastruktur Swisscom IT Clouds mithilfe von VMware vSphere Palette.
+              </p>
+            </div>
+            <div class="project-meta">
+              <span class="badge">VMware</span>
+              <span class="badge">vSphere</span>
+              <span class="badge">ESXi</span>
+              <span class="badge">vCenter</span>
+              <span class="badge">Powershell</span>
+              <span class="badge">Automatisierung</span>
+              <span class="badge">Grafana Monitoring</span>
+              <span class="badge">Scrum / Scrumban</span>
+              <span class="badge">Agile</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- D3.js Diagramm-Container -->
+        <div class="skills-chart-wrapper">
+          <h3>Kompetenz-Übersicht (Interaktive D3.js Visualisierung)</h3>
+          <p>Darstellung meiner wichtigsten Praxis-Technologien nach Erfahrungsfokus:</p>
+          <div id="skills-chart" class="chart-box">
+            <p class="loading-text">Lade D3.js Skill-Diagramm...</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 3. Projekte mit Filter & Pagination -->
-    <section id="projects" class="section">
+    <!-- 3. AUSBILDUNG, MODULE UND ARBEITEN -->
+    <section id="education" class="section">
       <div class="container">
-        <h2>Meine Projekte</h2>
-        <p>Projekte aus meinem BFH-Studium und meiner Praxis als Cloud Engineer.</p>
+        <h2>Ausbildung, Module und Arbeiten</h2>
+        <p>
+          Übersicht über mein aktuelles Bachelor-Studium an der BFH, mein HF-Studium an der HFTM 
+          sowie meine Berufslehre (EFZ) inklusive verfasster Praxis- und Diplomarbeiten.
+        </p>
 
-        <div class="filter-bar">
-          <button type="button" class="filter-btn active" data-filter="all">Alle Projekte</button>
-          <button type="button" class="filter-btn" data-filter="bfh">BFH Studium</button>
-          <button type="button" class="filter-btn" data-filter="cloud">Cloud &amp; Praxis</button>
+        <!-- Filter-Buttons -->
+        <div class="filter-group" id="education-filters">
+          <button type="button" class="filter-btn active" data-filter="all">Alle Stationen</button>
+          <button type="button" class="filter-btn" data-filter="bfh">BFH (Bachelor)</button>
+          <button type="button" class="filter-btn" data-filter="hftm">HFTM (HF-Diplom)</button>
+          <button type="button" class="filter-btn" data-filter="efz">Informatiker EFZ</button>
         </div>
 
-        <div id="projects-grid" class="projects-grid">
-          <p>Lade Projekte von GitHub...</p>
+        <!-- Dynamisches Grid für Ausbildungen, Module und Arbeiten -->
+        <div id="education-grid" class="projects-grid">
+          <p class="loading-text">Lade Ausbildungsdaten und Arbeiten...</p>
         </div>
 
-        <nav id="projects-pagination" class="pagination"></nav>
+        <!-- Seitennavigation (Pagination) -->
+        <nav id="education-pagination" class="pagination" aria-label="Seitennavigation Ausbildung"></nav>
       </div>
     </section>
 
-    <!-- 4. Kontaktformular -->
+    <!-- 4. GITHUB-PROJEKTE -->
+    <section id="github" class="section">
+      <div class="container">
+        <h2>Meine GitHub-Repositories (Live API)</h2>
+        <p>
+          Öffentliche Code-Repositories und Studienprojekte direkt abgerufen über die 
+          <strong>GitHub REST API</strong> (inkl. Zwischenspeicherung im Browser via <code>localStorage</code>):
+        </p>
+
+        <!-- Profil-Statistik-Leiste -->
+        <div id="github-profile-bar" class="github-bar">
+          <p class="loading-text">Verbinde mit GitHub API...</p>
+        </div>
+
+        <!-- Repository-Karten -->
+        <div id="github-grid" class="projects-grid">
+          <p class="loading-text">Lade öffentliche Repositories von GitHub...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. KONTAKTFORMULAR -->
     <section id="contact" class="section">
       <div class="container">
         <h2>Kontakt</h2>
-        <p>Hast du Fragen zu meinen Projekten oder meinem Studium? Schreib mir eine Nachricht.</p>
+        <p>Hast du Fragen zu meinem Werdegang, meinen Arbeiten oder möchtest dich vernetzen? Schreib mir eine Nachricht.</p>
 
         <form id="contact-form" class="contact-form" novalidate>
           <div class="form-group">
             <label for="name">Name *</label>
-            <input type="text" id="name" name="name" autocomplete="name" required minlength="2" placeholder="Dein Name" />
-            <span id="name-error" class="error-msg"></span>
+            <input type="text" id="name" name="name" autocomplete="name" required minlength="2" placeholder="Dein Name">
+            <span id="name-error" class="error-message"></span>
           </div>
 
           <div class="form-group">
             <label for="email">E-Mail *</label>
-            <input type="email" id="email" name="email" autocomplete="email" required placeholder="name@beispiel.ch" />
-            <span id="email-error" class="error-msg"></span>
+            <input type="email" id="email" name="email" autocomplete="email" required placeholder="name@beispiel.ch">
+            <span id="email-error" class="error-message"></span>
           </div>
 
           <div class="form-group">
             <label for="subject">Betreff *</label>
             <select id="subject" name="subject" required>
               <option value="" disabled selected>Bitte wählen...</option>
-              <option value="cloud">Cloud Engineering</option>
-              <option value="bfh">BFH Studium</option>
+              <option value="cloud">Austausch zu Cloud und DevOps</option>
+              <option value="study">Studium (BFH / HFTM) und Arbeiten</option>
+              <option value="networking">Bewerbung / Networking</option>
               <option value="other">Sonstiges</option>
             </select>
-            <span id="subject-error" class="error-msg"></span>
+            <span id="subject-error" class="error-message"></span>
           </div>
 
           <div class="form-group">
             <label for="message">Nachricht *</label>
             <textarea id="message" name="message" rows="5" required minlength="10" placeholder="Deine Nachricht..."></textarea>
-            <span id="message-error" class="error-msg"></span>
+            <span id="message-error" class="error-message"></span>
           </div>
 
           <button type="submit" class="btn btn-primary">Nachricht senden</button>
@@ -159,7 +267,6 @@
       <ul class="footer-links">
         <li><a href="https://github.com/Juventinooo0911" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="https://www.bfh.ch" target="_blank" rel="noopener">BFH</a></li>
-        <li><a href="https://www.nexplore.ch" target="_blank" rel="noopener">Nexplore AG</a></li>
       </ul>
     </div>
   </footer>
