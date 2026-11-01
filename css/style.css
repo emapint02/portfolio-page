@@ -1,47 +1,55 @@
 /* ==========================================================================
-   1. FARBVARIABLEN (Dracula Dark Theme & Light Mode)
+   1. FARBVARIABLEN (Dracula Dark Theme & Clean Tech Light Mode)
    ========================================================================== */
 :root {
   --bg-primary: #282a36;       /* Haupthintergrund (Dracula Background) */
   --bg-secondary: #44475a;     /* Karten- & Box-Hintergrund (Current Line) */
   --bg-header: rgba(40, 42, 54, 0.95);
+  --bg-badge: #282a36;         /* Hintergrund für kleine Skill-Badges */
   --text-primary: #f8f8f2;     /* Haupttext (Foreground) */
-  --text-muted: #a9b1d6;       /* Dezenter Text / Untertitel */
-  --accent-purple: #bd93f9;    /* Primärfarbe (Dracula Purple) */
-  --accent-cyan: #8be9fd;      /* Zweitfarbe (Dracula Cyan) */
-  --accent-green: #50fa7b;     /* Erfolg / Valide (Dracula Green) */
-  --accent-pink: #ff79c6;      /* Highlights (Dracula Pink) */
-  --accent-red: #ff5555;       /* Fehler / Ungültig (Dracula Red) */
+  --text-muted: #b4befe;       /* Dezenter Text / Untertitel */
+  --accent-purple: #bd93f9;    /* Dracula Purple */
+  --accent-cyan: #8be9fd;      /* Dracula Cyan */
+  --accent-green: #50fa7b;     /* Dracula Green */
+  --accent-orange: #ffb86c;    /* Dracula Orange */
+  --accent-yellow: #f1fa8c;    /* Dracula Yellow */
+  --accent-pink: #ff79c6;      /* Dracula Pink */
+  --accent-red: #ff5555;       /* Dracula Red */
   --border-color: #6272a4;     /* Rahmenfarbe (Dracula Comment) */
-  --radius: 8px;               /* Einheitliche abgerundete Ecken */
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --radius: 8px;
 }
 
-/* Helles Design (wird aktiv, wenn im HTML data-theme="light" steht) */
+/* Helles Design: Ruhiger, seriöser Business/Tech-Look (ohne bunte Regenbogen-Farben) */
 html[data-theme="light"] {
-  --bg-primary: #f8f9fa;
-  --bg-secondary: #ffffff;
-  --bg-header: rgba(248, 249, 250, 0.95);
-  --text-primary: #212529;
-  --text-muted: #495057;
-  --accent-purple: #6f42c1;
-  --accent-cyan: #0b7285;
-  --accent-green: #198754;
-  --accent-pink: #d63384;
-  --accent-red: #dc3545;
-  --border-color: #dee2e6;
+  --bg-primary: #f1f5f9;       /* Ruhiges, angenehmes Hellgrau-Blau (Slate 100) */
+  --bg-secondary: #ffffff;     /* Saubere weisse Karten */
+  --bg-header: rgba(255, 255, 255, 0.95);
+  --bg-badge: #f8fafc;         /* Dezenter Hintergrund für Badges */
+  --text-primary: #0f172a;     /* Tiefes Marine-Anthrazit für gestochen scharfe Schrift */
+  --text-muted: #475569;       /* Ruhiges Schiefergrau für Nebentexte */
+  --accent-purple: #4f46e5;    /* Edles Indigo-Blau als Hauptakzent (statt grellem Lila) */
+  --accent-cyan: #0284c7;      /* Seriöses Tech-Blau für Kartentitel & Links */
+  --accent-green: #0f766e;     /* Dezentes, dunkles Petrol/Tannengrün für Skills & Badges */
+  --accent-orange: #334155;    /* Ruhiges Dunkelschiefer für Firmennamen & Labels (kein grelles Orange) */
+  --accent-yellow: #4f46e5;    /* Gleiches Indigo-Blau für Untertitel (hält das Design ruhig) */
+  --accent-pink: #64748b;      /* Dezentes Grau-Blau für Zeiträume ("AKTUELL") */
+  --accent-red: #dc2626;       /* Klares Fehler-Rot */
+  --border-color: #cbd5e1;     /* Sauberer, feiner Rahmen */
+  --card-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
 }
 
 /* ==========================================================================
    2. GRUNDSTIL & BOX-MODEL
    ========================================================================== */
 * {
-  box-sizing: border-box; /* Padding & Border werden in die Breite eingerechnet */
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 html {
-  scroll-behavior: smooth; /* Sanftes Scrollen bei Klick auf Menü-Links */
+  scroll-behavior: smooth;
 }
 
 body {
@@ -106,7 +114,7 @@ img {
   top: -100px;
   left: 1rem;
   background-color: var(--accent-purple);
-  color: #282a36;
+  color: #ffffff;
   padding: 0.5rem 1rem;
   font-weight: bold;
   border-radius: var(--radius);
@@ -144,13 +152,13 @@ img {
 
 .logo:hover {
   text-decoration: none;
-  color: var(--accent-pink);
+  color: var(--accent-cyan);
 }
 
 .nav-list {
-  list-style: none; /* Entfernt die Aufzählungspunkte der <ul> */
-  display: flex;    /* Legt die <li>-Elemente horizontal nebeneinander */
-  gap: 1.5rem;      /* 1.5rem Abstand zwischen den Menüpunkten */
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
 }
 
 .nav-list a {
@@ -169,7 +177,7 @@ img {
   align-items: center;
 }
 
-/* Menü-Button ist auf dem Desktop ausgeblendet (wird erst bei < 768px sichtbar) */
+/* Menü-Button ist auf dem Desktop ausgeblendet */
 .menu-toggle {
   display: none;
   background-color: var(--bg-secondary);
@@ -185,14 +193,14 @@ img {
    ========================================================================== */
 .hero-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr; /* Links 2 Drittel (2fr), rechts 1 Drittel (1fr) */
+  grid-template-columns: 2fr 1fr;
   gap: 2rem;
   align-items: center;
 }
 
 .subtitle {
-  color: var(--accent-cyan);
-  font-weight: 600;
+  color: var(--accent-yellow);
+  font-weight: 700;
   text-transform: uppercase;
   font-size: 0.9rem;
   letter-spacing: 0.05em;
@@ -227,13 +235,17 @@ img {
 
 .btn-primary {
   background-color: var(--accent-purple);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .btn-primary {
   color: #282a36;
 }
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--text-primary);
-  border-color: var(--accent-purple);
+  color: var(--accent-orange);
+  border-color: var(--accent-orange);
 }
 
 .btn-icon {
@@ -252,6 +264,7 @@ img {
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
   padding: 1.5rem;
+  box-shadow: var(--card-shadow);
 }
 
 .profile-header {
@@ -267,8 +280,8 @@ img {
 .profile-img {
   width: 120px;
   height: 120px;
-  border-radius: 50%; /* Macht das Bild kreisrund */
-  object-fit: cover;  /* Verhindert Verzerrung bei rechteckigen Fotos */
+  border-radius: 50%;
+  object-fit: cover;
   border: 3px solid var(--accent-purple);
   margin-bottom: 0.75rem;
   background-color: var(--bg-primary);
@@ -281,7 +294,8 @@ img {
 
 .profile-list dt {
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: var(--accent-orange);
+  font-weight: 600;
   text-transform: uppercase;
   margin-top: 0.75rem;
 }
@@ -296,7 +310,7 @@ img {
    ========================================================================== */
 .experience-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* 3 Stationen nebeneinander auf Desktop */
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1.5rem;
   margin-top: 1.5rem;
 }
@@ -304,15 +318,15 @@ img {
 .station-period {
   display: inline-block;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--accent-pink);
   text-transform: uppercase;
   margin-bottom: 0.25rem;
 }
 
 .station-company {
-  font-size: 0.9rem;
-  color: var(--text-muted);
+  font-size: 0.95rem;
+  color: var(--accent-orange);
   font-weight: 600;
 }
 
@@ -321,7 +335,7 @@ img {
 }
 
 .skills-chart-wrapper h3 {
-  color: var(--accent-cyan);
+  color: var(--accent-yellow);
 }
 
 .chart-box {
@@ -331,6 +345,7 @@ img {
   padding: 1.5rem;
   margin-top: 1rem;
   min-height: 220px;
+  box-shadow: var(--card-shadow);
 }
 
 .loading-text {
@@ -362,12 +377,16 @@ img {
   border-color: var(--accent-purple);
 }
 
-/* Aktiver Filter-Button (Compound Selector) */
+/* Aktiver Filter-Button */
 .filter-btn.active {
   background-color: var(--accent-purple);
-  color: #282a36;
+  color: #ffffff;
   border-color: var(--accent-purple);
   font-weight: 600;
+}
+
+html[data-theme="dark"] .filter-btn.active {
+  color: #282a36;
 }
 
 /* 2-spaltiges Grid für Karten auf dem Desktop */
@@ -386,6 +405,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: var(--card-shadow);
 }
 
 .project-card h3 {
@@ -405,12 +425,13 @@ img {
   font-size: 0.8rem;
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-badge);
   border: 1px solid var(--border-color);
   color: var(--accent-green);
+  font-weight: 500;
 }
 
-/* GitHub Profil-Leiste (über den GitHub-Repos) */
+/* GitHub Profil-Leiste */
 .github-bar {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -422,6 +443,7 @@ img {
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
+  box-shadow: var(--card-shadow);
 }
 
 /* Seitennavigation (Pagination) */
@@ -449,6 +471,7 @@ img {
   display: block;
   font-weight: 600;
   margin-bottom: 0.4rem;
+  color: var(--accent-orange);
 }
 
 .form-group input,
@@ -529,29 +552,25 @@ img {
     font-size: 2rem;
   }
 
-  /* Alle mehrspaltigen Grids werden auf Mobile einspaltig (1fr) */
   .hero-grid,
   .experience-grid,
   .projects-grid {
     grid-template-columns: 1fr;
   }
 
-  /* Mobiler Menü-Button wird eingeblendet */
   .menu-toggle {
     display: block;
   }
 
-  /* Navigation klappt auf dem Handy standardmässig zu */
   .site-nav {
     display: none;
     width: 100%;
-    order: 3; /* Schiebt das aufgeklappte Menü unter das Logo und die Buttons */
+    order: 3;
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: 1px solid var(--border-color);
   }
 
-  /* Wenn JavaScript die Klasse .is-open hinzufügt, wird das Menü sichtbar */
   .site-nav.is-open {
     display: block;
   }
@@ -561,7 +580,6 @@ img {
     gap: 0.75rem;
   }
 
-  /* Erlaubt dem Header-Inhalt umzubrechen, wenn das Menü aufklappt */
   .header-inner {
     flex-wrap: wrap;
   }

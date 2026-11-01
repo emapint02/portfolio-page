@@ -10,8 +10,8 @@ Die Seite dient als digitale Visitenkarte, stellt meinen Hintergrund als **Cloud
 * **Hochschule:** Berner Fachhochschule (BFH) – Wirtschaftsinformatik
 * **Dozent:** Syrian Hadad
 * **Technischer Support:** Kevin Adrian Bieri
-* **Repository:** https://github.com/Juventinooo0911/portfolio-page
-* **Live-Seite (GitHub Pages):** https://Juventinooo0911.github.io/portfolio-page/
+* **Repository:** https://github.com/emapint02/portfolio-page
+* **Live-Seite (GitHub Pages):** https://emapint02.github.io/portfolio-page/
 * **Abgabetermin:** 18. Dezember 2026
 
 ---
@@ -70,7 +70,7 @@ http-serve
 | Schritt | Beschreibung | Status |
 | :--- | :--- | :--- |
 | **1. Setup & HTML-Gerüst** | `.gitignore`, `README.md` und semantische `index.html` | 🟢 Abgeschlossen |
-| **2. CSS & Responsive Design** | Grunddesign, Flexbox-Navigation, CSS Grid Layout & Media Queries | 🟡 In Bearbeitung |
-| **3. JavaScript & Formular** | Interaktionen, Menü-Toggle und Formularvalidierung | ⚪ Ausstehend |
+| **2. CSS & Responsive Design** | Grunddesign, Flexbox-Navigation, CSS Grid Layout & Media Queries | 🟢 Abgeschlossen |
+| **3. JavaScript & Formular** | Interaktionen, Menü-Toggle und Formularvalidierung | 🟡 In Bearbeitung |
 | **4. GitHub API & Caching** | Dynamisches Laden der Projekte, Filter, Pagination & `localStorage` | ⚪ Ausstehend |
 | **5. D3.js Diagramm & Feinschliff** | Einbindung des Skill-Diagramms und abschliessender Test | ⚪ Ausstehend |
