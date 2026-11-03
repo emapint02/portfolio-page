@@ -16,15 +16,15 @@
   <!-- Kopfbereich und Navigation -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#" class="logo">&lt;EP/&gt;</a>
+      <a href="#about" class="logo" data-target="about">&lt;EP/&gt;</a>
 
       <nav class="site-nav" id="main-nav">
         <ul class="nav-list">
-          <li><a href="#about">Über mich</a></li>
-          <li><a href="#experience">Berufserfahrung und Skills</a></li>
-          <li><a href="#education">Ausbildungen</a></li>
-          <li><a href="#github">My GitHub</a></li>
-          <li><a href="#contact">Kontakt</a></li>
+          <li><a href="#about" class="nav-link active" data-target="about">Über mich</a></li>
+          <li><a href="#experience" class="nav-link" data-target="experience">Berufserfahrung und Skills</a></li>
+          <li><a href="#education" class="nav-link" data-target="education">Ausbildungen</a></li>
+          <li><a href="#github" class="nav-link" data-target="github">My GitHub</a></li>
+          <li><a href="#contact" class="nav-link" data-target="contact">Kontakt</a></li>
         </ul>
       </nav>
 
@@ -38,8 +38,8 @@
   <!-- Hauptinhalt -->
   <main id="main-content">
 
-    <!-- 1. ÜBER MICH -->
-    <section id="about" class="section hero">
+    <!-- 1. STARTSEITE: ÜBER MICH -->
+    <section id="about" class="section view-section">
       <div class="container hero-grid">
         <div class="hero-text">
           <p class="subtitle">Cloud Engineer / Operator und B.Sc. Digital Business und AI (BFH)</p>
@@ -48,9 +48,13 @@
             Ich entwerfe skalierbare Cloud-Infrastrukturen, automatisiere Prozesse und verbinde 
             moderne Cloud-Native-Architekturen mit Web- und AI-Technologien.
           </p>
+
+          <!-- 2x2 Raster: Oben Beruf & Ausbildung, darunter My GitHub & Kontakt -->
           <div class="hero-buttons">
-            <a href="#experience" class="btn btn-primary">Beruf und Skills</a>
-            <a href="#education" class="btn btn-secondary">Ausbildung und Arbeiten</a>
+            <a href="#experience" class="btn btn-purple" data-target="experience">Beruf und Skills</a>
+            <a href="#education" class="btn btn-orange" data-target="education">Ausbildung und Module</a>
+            <a href="#github" class="btn btn-yellow" data-target="github">My GitHub</a>
+            <a href="#contact" class="btn btn-card" data-target="contact">Kontakt</a>
           </div>
         </div>
 
@@ -87,18 +91,19 @@
       </div>
     </section>
 
-    <!-- 2. BERUFSERFAHRUNG UND TECH-SKILLS -->
-    <section id="experience" class="section">
+    <!-- 2. UNTERANSICHT: BERUFSERFAHRUNG UND TECH-SKILLS -->
+    <section id="experience" class="section view-section hidden">
       <div class="container">
+        <button type="button" class="filter-btn back-btn" data-target="about">Zurück zur Übersicht</button>
+
         <h2>Berufserfahrung und Tech-Skills</h2>
         <p>Meine bisherigen beruflichen Stationen in der IT und meine technischen Schwerpunkte aus der Praxis:</p>
 
         <div class="experience-grid">
           <article class="project-card">
             <div>
-              <span class="station-period">Aktuell</span>
               <h3>Cloud Operations Engineer</h3>
-              <p class="station-company">Nexplore AG</p>
+              <p class="station-sub">Nexplore AG</p>
               <p>
                 Aufbau, Standardisierung und Betrieb von Cloud-Native-Plattformen (Azure / AKS), 
                 Automatisierung via Infrastructure as Code sowie GitOps-Pipelines.
@@ -117,9 +122,8 @@
 
           <article class="project-card">
             <div>
-              <span class="station-period">Vorherige Station</span>
               <h3>System und DevOps Engineer</h3>
-              <p class="station-company">Dynasoft AG</p>
+              <p class="station-sub">Dynasoft AG</p>
               <p>
                 Containerisierung von Applikationen mit Docker, Aufbau zentraler Monitoring-Stacks 
                 (Prometheus, Grafana, Loki) sowie Linux- und Netzwerk-Engineering.
@@ -135,9 +139,8 @@
 
           <article class="project-card">
             <div>
-              <span class="station-period">Lehrabgang</span>
               <h3>Young Professional</h3>
-              <p class="station-company">Swisscom (Schweiz) AG</p>
+              <p class="station-sub">Swisscom (Schweiz) AG</p>
               <p>
                 Betrieb von DCS+ Infrastruktur Swisscom IT Clouds mithilfe von VMware vSphere Palette.
               </p>
@@ -167,36 +170,58 @@
       </div>
     </section>
 
-    <!-- 3. AUSBILDUNG, MODULE UND ARBEITEN -->
-    <section id="education" class="section">
+    <!-- 3. UNTERANSICHT: AUSBILDUNGEN, MODULE UND ARBEITEN -->
+    <section id="education" class="section view-section hidden">
       <div class="container">
-        <h2>Ausbildung, Module und Arbeiten</h2>
+        <button type="button" class="filter-btn back-btn" data-target="about">Zurück zur Übersicht</button>
+
+        <h2>Ausbildungen, Module und Arbeiten</h2>
         <p>
-          Übersicht über mein aktuelles Bachelor-Studium an der BFH, mein HF-Studium an der HFTM 
-          sowie meine Berufslehre (EFZ) inklusive verfasster Praxis- und Diplomarbeiten.
+          Mein Bildungsweg aufgeteilt nach Stufen. Pro Karte sind die jeweiligen Module, Lerninhalte 
+          sowie die darin realisierten Projekte und Praxisarbeiten dokumentiert:
         </p>
 
-        <!-- Filter-Buttons -->
-        <div class="filter-group" id="education-filters">
-          <button type="button" class="filter-btn active" data-filter="all">Alle Stationen</button>
-          <button type="button" class="filter-btn" data-filter="bfh">BFH (Bachelor)</button>
-          <button type="button" class="filter-btn" data-filter="hftm">HFTM (HF-Diplom)</button>
-          <button type="button" class="filter-btn" data-filter="efz">Informatiker EFZ</button>
+        <!-- Bachelor-Studium (BFH) -->
+        <div class="education-stage">
+          <div class="stage-header">
+            <h3>B.Sc. Digital Business und AI – Berner Fachhochschule (BFH)</h3>
+            <p class="station-sub">Fachhochschule (Aktuell)</p>
+            <p>Berufsbegleitendes Bachelor-Studium mit Fokus auf AI, Data Engineering, Web-Architekturen und digitale Transformation.</p>
+          </div>
+          <div id="bfh-grid" class="projects-grid"></div>
+          <nav id="bfh-pagination" class="pagination" aria-label="Seitennavigation BFH Module"></nav>
         </div>
 
-        <!-- Dynamisches Grid für Ausbildungen, Module und Arbeiten -->
-        <div id="education-grid" class="projects-grid">
-          <p class="loading-text">Lade Ausbildungsdaten und Arbeiten...</p>
+        <!-- Höhere Fachschule (HFTM) -->
+        <div class="education-stage">
+          <div class="stage-header">
+            <h3>Dipl. Wirtschaftsinformatiker HF – HFTM</h3>
+            <p class="station-sub">Höhere Fachschule (Abgeschlossen)</p>
+            <p>Praxisorientiertes Diplomstudium an der Schnittstelle zwischen IT-Architektur, Prozessmanagement und Betriebswirtschaft.</p>
+          </div>
+          <div id="hftm-grid" class="projects-grid"></div>
+          <nav id="hftm-pagination" class="pagination" aria-label="Seitennavigation HFTM Module"></nav>
         </div>
 
-        <!-- Seitennavigation (Pagination) -->
-        <nav id="education-pagination" class="pagination" aria-label="Seitennavigation Ausbildung"></nav>
+        <!-- Berufslehre (EFZ) -->
+        <div class="education-stage">
+          <div class="stage-header">
+            <h3>Informatiker EFZ (Systemtechnik) – Berufslehre</h3>
+            <p class="station-sub">Berufliche Grundbildung (Abgeschlossen)</p>
+            <p>Vierjährige Grundausbildung mit Schwerpunkt auf Enterprise-Server-Infrastrukturen, Virtualisierung, Netzwerk und Scripting.</p>
+          </div>
+          <div id="efz-grid" class="projects-grid"></div>
+          <nav id="efz-pagination" class="pagination" aria-label="Seitennavigation EFZ Module"></nav>
+        </div>
+
       </div>
     </section>
 
-    <!-- 4. GITHUB-PROJEKTE -->
-    <section id="github" class="section">
+    <!-- 4. UNTERANSICHT: GITHUB-PROJEKTE -->
+    <section id="github" class="section view-section hidden">
       <div class="container">
+        <button type="button" class="filter-btn back-btn" data-target="about">Zurück zur Übersicht</button>
+
         <h2>Meine GitHub-Repositories (Live API)</h2>
         <p>
           Öffentliche Code-Repositories und Studienprojekte direkt abgerufen über die 
@@ -215,9 +240,11 @@
       </div>
     </section>
 
-    <!-- 5. KONTAKTFORMULAR -->
-    <section id="contact" class="section">
+    <!-- 5. UNTERANSICHT: KONTAKTFORMULAR -->
+    <section id="contact" class="section view-section hidden">
       <div class="container">
+        <button type="button" class="filter-btn back-btn" data-target="about">Zurück zur Übersicht</button>
+
         <h2>Kontakt</h2>
         <p>Hast du Fragen zu meinem Werdegang, meinen Arbeiten oder möchtest dich vernetzen? Schreib mir eine Nachricht.</p>
 
@@ -252,7 +279,7 @@
             <span id="message-error" class="error-message"></span>
           </div>
 
-          <button type="submit" class="btn btn-primary">Nachricht senden</button>
+          <button type="submit" class="btn btn-purple">Nachricht senden</button>
           <p id="form-status" class="form-status"></p>
         </form>
       </div>
@@ -263,10 +290,10 @@
   <!-- Fusszeile -->
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>&copy; 2026 Emanuele Pintarelli – Modul Web Engineering (BFH)</p>
+      <p>&copy; 2026 Emanuele Pintarelli</p>
       <ul class="footer-links">
-        <li><a href="https://github.com/Juventinooo0911" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://www.bfh.ch" target="_blank" rel="noopener">BFH</a></li>
+        <li><a href="https://github.com/emapint02" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/emanuele-pintarelli-5b80ab237" target="_blank" rel="noopener">LinkedIn</a></li>
       </ul>
     </div>
   </footer>

@@ -25,20 +25,48 @@ themeToggleBtn.addEventListener('click', function () {
 
 
 // ==========================================================================
-// 2. MOBILES MENÜ EIN- UND AUSBLENDEN
+// 2. NAVIGATION UND WECHSEL ZWISCHEN UNTERANSICHTEN (SUBPAGES)
 // ==========================================================================
 const menuToggleBtn = document.getElementById('menu-toggle');
 const mainNav = document.getElementById('main-nav');
+const allSections = document.querySelectorAll('.view-section');
+const navLinks = document.querySelectorAll('.nav-link');
 
 menuToggleBtn.addEventListener('click', function () {
   mainNav.classList.toggle('is-open');
 });
 
-// Menü auf dem Handy automatisch schliessen, sobald ein Link geklickt wird
-const navLinks = document.querySelectorAll('.nav-list a');
-navLinks.forEach(function (link) {
-  link.addEventListener('click', function () {
-    mainNav.classList.remove('is-open');
+// Funktion: Zeigt nur die gewählte Unteransicht an und blendet alle anderen aus
+function showSection(targetId) {
+  allSections.forEach(function (section) {
+    if (section.id === targetId) {
+      section.classList.remove('hidden');
+    } else {
+      section.classList.add('hidden');
+    }
+  });
+
+  // Aktiven Menüpunkt oben in der Navigation markieren
+  navLinks.forEach(function (link) {
+    if (link.getAttribute('data-target') === targetId) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+
+  // Mobiles Menü schliessen und nach oben scrollen
+  mainNav.classList.remove('is-open');
+  window.scrollTo(0, 0);
+}
+
+// Klick-Events für alle Elemente mit data-target (Menü-Links, Kacheln, Zurück-Buttons)
+const viewTriggers = document.querySelectorAll('[data-target]');
+viewTriggers.forEach(function (trigger) {
+  trigger.addEventListener('click', function (event) {
+    event.preventDefault();
+    const targetId = trigger.getAttribute('data-target');
+    showSection(targetId);
   });
 });
 
@@ -112,3 +140,171 @@ contactForm.addEventListener('submit', function (event) {
     contactForm.reset();
   }
 });
+
+
+// ==========================================================================
+// 4. AUSBILDUNGEN, MODULE UND ARBEITEN (PRO STUFE MIT EIGENER PAGINATION)
+// ==========================================================================
+
+// --- Module und Projekte an der BFH (Bachelor) ---
+const bfhModules = [
+  {
+    title: 'Web Engineering',
+    semester: 'Modul',
+    description: 'Aufbau moderner Webapplikationen mit HTML5, CSS3 (Flexbox, Grid), Vanilla JavaScript sowie Web-Architekturen und REST APIs.',
+    project: 'Einzelarbeit: Entwicklung dieser responsiven Portfolio-Webseite mit GitHub REST API, localStorage-Caching und D3.js Visualisierung.',
+    badges: ['HTML5', 'CSS3', 'JavaScript', 'REST API', 'D3.js']
+  },
+  {
+    title: 'Platzhalter Modul 2',
+    semester: 'Modul',
+    description: 'Beschreibung',
+    project: 'Beschreibung',
+    badges: ['Tag 1', 'Tag 2']
+  },
+  {
+    title: 'Platzhalter Modul 3',
+    semester: 'Modul',
+    description: 'Beschreibung',
+    project: 'Beschreibung',
+    badges: ['Tag 1', 'Tag 2']
+  }
+];
+
+// --- Module und Arbeiten an der HFTM (Höhere Fachschule) ---
+const hftmModules = [
+  {
+    title: 'IDP as a Service',
+    semester: 'HF-Diplomarbeit',
+    description: 'Beschreibung',
+    project: 'Beschreibung',
+    badges: ['Diplomarbeit', 'IDP', 'weitere...']
+  },
+  {
+    title: 'Platzhalter Modul 2',
+    semester: 'HF-Modul',
+    description: 'Beschreibung',
+    project: 'Beschreibung',
+    badges: ['Tag 1', 'Tag 2']
+  },
+  {
+    title: 'Platzhalter Modul 3',
+    semester: 'HF-Modul',
+    description: 'Beschreibung',
+    project: 'Beschreibung',
+    badges: ['Tag 1', 'Tag 2']
+  }
+];
+
+// --- Module und Arbeiten in der Berufslehre (Informatiker EFZ) ---
+const efzModules = [
+  {
+    title: 'Individuelle Praktische Arbeit – Systemtechnik',
+    semester: 'Abschlussarbeit (IPA)',
+    description: 'Beschreibung',
+    project: 'Beschreibung',
+    badges: ['IPA Abschlussarbeit', 'Systemtechnik', 'Virtualisierung', 'Proof of Concept', 'weitere']
+  },
+  {
+    title: 'Platzhalter Modul 2',
+    semester: 'Berufslehre',
+    description: 'Beschreibung',
+    project: 'Beschreibung',
+    badges: ['Tag 1', 'Tag 2']
+  },
+  {
+    title: 'Platzhalter Modul 3',
+    semester: 'Berufslehre',
+    description: 'Beschreibung',
+    project: 'Beschreibung',
+    badges: ['Tag 1', 'Tag 2']
+  }
+];
+
+// Wiederverwendbare Funktion: Baut für eine Bildungsstufe die Karten und eigene Pagination auf
+function setupStagePagination(gridId, paginationId, modulesArray) {
+  const gridElement = document.getElementById(gridId);
+  const paginationElement = document.getElementById(paginationId);
+  const itemsPerPage = 2; // Zeigt pro Stufe jeweils 2 Modul-Karten nebeneinander
+  let currentPage = 1;
+
+  function renderStage() {
+    const totalPages = Math.ceil(modulesArray.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const currentItems = modulesArray.slice(startIndex, endIndex);
+
+    // 1. Modul-Karten für die aktuelle Seite zeichnen (Titel oben, Untertitel darunter)
+    gridElement.innerHTML = '';
+
+    currentItems.forEach(function (item) {
+      const card = document.createElement('article');
+      card.className = 'project-card';
+
+      let badgesHtml = '';
+      item.badges.forEach(function (badgeText) {
+        badgesHtml += '<span class="badge">' + badgeText + '</span>';
+      });
+
+      card.innerHTML =
+        '<div>' +
+          '<h4>' + item.title + '</h4>' +
+          '<p class="station-sub">' + item.semester + '</p>' +
+          '<p>' + item.description + '</p>' +
+          '<div class="module-project">' +
+            '<strong>Projekt / Erfahrung:</strong>' +
+            item.project +
+          '</div>' +
+        '</div>' +
+        '<div class="project-meta">' +
+          badgesHtml +
+        '</div>';
+
+      gridElement.appendChild(card);
+    });
+
+    // 2. Eigene Pagination-Buttons unter dieser Stufe zeichnen (ohne eckige Klammern)
+    paginationElement.innerHTML = '';
+
+    if (totalPages > 1) {
+      const prevBtn = document.createElement('button');
+      prevBtn.type = 'button';
+      prevBtn.className = 'filter-btn';
+      prevBtn.textContent = 'Zurück';
+      prevBtn.disabled = currentPage === 1;
+      prevBtn.addEventListener('click', function () {
+        if (currentPage > 1) {
+          currentPage--;
+          renderStage();
+        }
+      });
+
+      const pageInfo = document.createElement('span');
+      pageInfo.textContent = 'Seite ' + currentPage + ' von ' + totalPages;
+
+      const nextBtn = document.createElement('button');
+      nextBtn.type = 'button';
+      nextBtn.className = 'filter-btn';
+      nextBtn.textContent = 'Weiter';
+      nextBtn.disabled = currentPage === totalPages;
+      nextBtn.addEventListener('click', function () {
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderStage();
+        }
+      });
+
+      paginationElement.appendChild(prevBtn);
+      paginationElement.appendChild(pageInfo);
+      paginationElement.appendChild(nextBtn);
+    }
+  }
+
+  // Erste Seite beim Start direkt anzeigen
+  renderStage();
+}
+
+// Alle 3 Ausbildungs-Stufen initialisieren
+setupStagePagination('bfh-grid', 'bfh-pagination', bfhModules);
+setupStagePagination('hftm-grid', 'hftm-pagination', hftmModules);
+setupStagePagination('efz-grid', 'efz-pagination', efzModules);

@@ -1,46 +1,40 @@
 /* ==========================================================================
-   1. FARBVARIABLEN (Dracula Dark Theme & Clean Tech Light Mode)
+   1. FARBVARIABLEN (Dracula Dark Theme: Fokus auf Lila, Orange und Gelb)
    ========================================================================== */
 :root {
-  --bg-primary: #282a36;       /* Haupthintergrund (Dracula Background) */
-  --bg-secondary: #44475a;     /* Karten- & Box-Hintergrund (Current Line) */
+  --bg-primary: #282a36;       /* Dracula Background */
+  --bg-secondary: #44475a;     /* Dracula Selection (Karten-Hintergrund) */
   --bg-header: rgba(40, 42, 54, 0.95);
-  --bg-badge: #282a36;         /* Hintergrund für kleine Skill-Badges */
-  --text-primary: #f8f8f2;     /* Haupttext (Foreground) */
-  --text-muted: #b4befe;       /* Dezenter Text / Untertitel */
+  --bg-badge: #282a36;         /* Dunkler Hintergrund für kleine Badges */
+  --text-primary: #f8f8f2;     /* Dracula Foreground (Haupttext) */
+  --text-muted: #cbd5e1;       /* Ruhiges Hellgrau für Fliesstext */
   --accent-purple: #bd93f9;    /* Dracula Purple */
-  --accent-cyan: #8be9fd;      /* Dracula Cyan */
-  --accent-green: #50fa7b;     /* Dracula Green */
   --accent-orange: #ffb86c;    /* Dracula Orange */
   --accent-yellow: #f1fa8c;    /* Dracula Yellow */
-  --accent-pink: #ff79c6;      /* Dracula Pink */
-  --accent-red: #ff5555;       /* Dracula Red */
-  --border-color: #6272a4;     /* Rahmenfarbe (Dracula Comment) */
+  --accent-red: #ff5555;       /* Dracula Red (nur für Formular-Fehler) */
+  --border-color: #6272a4;     /* Dracula Comment (Rahmenfarbe) */
   --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   --radius: 8px;
 }
 
-/* Helles Design: Ruhiger, seriöser Business/Tech-Look (ohne bunte Regenbogen-Farben) */
+/* Helles Design: Ruhiger, seriöser Business/Tech-Look */
 html[data-theme="light"] {
-  --bg-primary: #f1f5f9;       /* Ruhiges, angenehmes Hellgrau-Blau (Slate 100) */
-  --bg-secondary: #ffffff;     /* Saubere weisse Karten */
+  --bg-primary: #f1f5f9;
+  --bg-secondary: #ffffff;
   --bg-header: rgba(255, 255, 255, 0.95);
-  --bg-badge: #f8fafc;         /* Dezenter Hintergrund für Badges */
-  --text-primary: #0f172a;     /* Tiefes Marine-Anthrazit für gestochen scharfe Schrift */
-  --text-muted: #475569;       /* Ruhiges Schiefergrau für Nebentexte */
-  --accent-purple: #4f46e5;    /* Edles Indigo-Blau als Hauptakzent (statt grellem Lila) */
-  --accent-cyan: #0284c7;      /* Seriöses Tech-Blau für Kartentitel & Links */
-  --accent-green: #0f766e;     /* Dezentes, dunkles Petrol/Tannengrün für Skills & Badges */
-  --accent-orange: #334155;    /* Ruhiges Dunkelschiefer für Firmennamen & Labels (kein grelles Orange) */
-  --accent-yellow: #4f46e5;    /* Gleiches Indigo-Blau für Untertitel (hält das Design ruhig) */
-  --accent-pink: #64748b;      /* Dezentes Grau-Blau für Zeiträume ("AKTUELL") */
-  --accent-red: #dc2626;       /* Klares Fehler-Rot */
-  --border-color: #cbd5e1;     /* Sauberer, feiner Rahmen */
+  --bg-badge: #f8fafc;
+  --text-primary: #0f172a;
+  --text-muted: #475569;
+  --accent-purple: #4f46e5;
+  --accent-orange: #c2410c;
+  --accent-yellow: #b45309;
+  --accent-red: #dc2626;
+  --border-color: #cbd5e1;
   --card-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
 }
 
 /* ==========================================================================
-   2. GRUNDSTIL & BOX-MODEL
+   2. GRUNDSTIL UND BOX-MODEL
    ========================================================================== */
 * {
   box-sizing: border-box;
@@ -59,7 +53,6 @@ body {
   line-height: 1.6;
 }
 
-/* Flüssiger Container */
 .container {
   width: 90%;
   max-width: 1100px;
@@ -67,16 +60,23 @@ body {
 }
 
 .section {
-  padding: 4rem 0;
-  border-bottom: 1px solid var(--border-color);
+  padding: 3.5rem 0;
+  min-height: calc(100vh - 140px);
 }
 
-/* Typografie & Überschriften */
+/* Blendet nicht aktive Unteransichten aus */
+.hidden {
+  display: none;
+}
+
+/* Typografie und Überschriften */
 h1,
 h2,
-h3 {
-  line-height: 1.2;
-  margin-bottom: 1rem;
+h3,
+h4 {
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
 }
 
 h1 {
@@ -84,7 +84,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: 1.85rem;
   color: var(--accent-purple);
 }
 
@@ -93,7 +93,7 @@ p {
 }
 
 a {
-  color: var(--accent-cyan);
+  color: var(--accent-purple);
   text-decoration: none;
 }
 
@@ -101,20 +101,19 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Flexible Bilder */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* Skip-Link: Normal versteckt, bei Tab-Taste sichtbar */
+/* Skip-Link */
 .skip-link {
   position: absolute;
   top: -100px;
   left: 1rem;
   background-color: var(--accent-purple);
-  color: #ffffff;
+  color: #282a36;
   padding: 0.5rem 1rem;
   font-weight: bold;
   border-radius: var(--radius);
@@ -126,7 +125,7 @@ img {
 }
 
 /* ==========================================================================
-   3. KOPFBEREICH & NAVIGATION MIT FLEXBOX
+   3. KOPFBEREICH UND NAVIGATION MIT FLEXBOX
    ========================================================================== */
 .site-header {
   position: sticky;
@@ -152,7 +151,7 @@ img {
 
 .logo:hover {
   text-decoration: none;
-  color: var(--accent-cyan);
+  color: var(--accent-orange);
 }
 
 .nav-list {
@@ -164,10 +163,13 @@ img {
 .nav-list a {
   color: var(--text-primary);
   font-weight: 500;
+  padding-bottom: 0.25rem;
 }
 
-.nav-list a:hover {
+.nav-list a:hover,
+.nav-list a.active {
   color: var(--accent-purple);
+  border-bottom: 2px solid var(--accent-purple);
   text-decoration: none;
 }
 
@@ -177,7 +179,6 @@ img {
   align-items: center;
 }
 
-/* Menü-Button ist auf dem Desktop ausgeblendet */
 .menu-toggle {
   display: none;
   background-color: var(--bg-secondary);
@@ -189,7 +190,7 @@ img {
 }
 
 /* ==========================================================================
-   4. HERO / ÜBER MICH MIT CSS GRID & PROFILBILD
+   4. STARTSEITE: ÜBER MICH, 2x2 BUTTON-GRID UND PROFILBILD
    ========================================================================== */
 .hero-grid {
   display: grid;
@@ -202,7 +203,7 @@ img {
   color: var(--accent-yellow);
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   letter-spacing: 0.05em;
 }
 
@@ -210,22 +211,28 @@ img {
   color: var(--accent-purple);
 }
 
+/* 2x2 Raster: 2 Spalten nebeneinander, 2 Zeilen untereinander */
 .hero-buttons {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  margin-top: 1.5rem;
-  flex-wrap: wrap;
+  margin-top: 1.75rem;
+  max-width: 480px;
 }
 
-/* Buttons */
+/* Basis-Styling für alle 4 Buttons (gefüllt + sichtbarer Rahmen) */
 .btn {
-  display: inline-block;
-  padding: 0.7rem 1.4rem;
+  display: block;
+  width: 100%;
+  padding: 0.8rem 1.2rem;
   border-radius: var(--radius);
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  border: 2px solid transparent;
-  font-size: 1rem;
+  border: 2px solid var(--border-color);
+  font-size: 0.95rem;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: var(--card-shadow);
 }
 
 .btn:hover {
@@ -233,19 +240,39 @@ img {
   opacity: 0.9;
 }
 
-.btn-primary {
+/* Button 1 (Oben links): Lila gefüllt mit Rahmen */
+.btn-purple {
   background-color: var(--accent-purple);
-  color: #ffffff;
-}
-
-html[data-theme="dark"] .btn-primary {
   color: #282a36;
+  border-color: #f8f8f2;
 }
 
-.btn-secondary {
-  background-color: transparent;
-  color: var(--accent-orange);
-  border-color: var(--accent-orange);
+/* Button 2 (Oben rechts): Orange gefüllt mit Rahmen */
+.btn-orange {
+  background-color: var(--accent-orange);
+  color: #282a36;
+  border-color: #f8f8f2;
+}
+
+/* Button 3 (Unten links): Gelb gefüllt mit Rahmen */
+.btn-yellow {
+  background-color: var(--accent-yellow);
+  color: #282a36;
+  border-color: #f8f8f2;
+}
+
+/* Button 4 (Unten rechts): Dunkel gefüllt (Dracula Selection) mit Lila Rahmen */
+.btn-card {
+  background-color: var(--bg-secondary);
+  color: var(--accent-purple);
+  border-color: var(--accent-purple);
+}
+
+html[data-theme="light"] .btn-purple,
+html[data-theme="light"] .btn-orange,
+html[data-theme="light"] .btn-yellow {
+  color: #ffffff;
+  border-color: transparent;
 }
 
 .btn-icon {
@@ -258,7 +285,12 @@ html[data-theme="dark"] .btn-primary {
   font-size: 1rem;
 }
 
-/* Kurzprofil-Box & Profilbild */
+/* Zurück-Button auf den Unteransichten */
+.back-btn {
+  margin-bottom: 1.5rem;
+}
+
+/* Kurzprofil-Box und Profilbild */
 .profile-card {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -290,23 +322,24 @@ html[data-theme="dark"] .btn-primary {
 .profile-header h2 {
   font-size: 1.3rem;
   margin-bottom: 0;
+  color: var(--accent-purple);
 }
 
 .profile-list dt {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--accent-orange);
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   margin-top: 0.75rem;
 }
 
 .profile-list dd {
   font-weight: 600;
-  color: var(--accent-green);
+  color: var(--text-primary);
 }
 
 /* ==========================================================================
-   5. BERUFSERFAHRUNG & D3.JS DIAGRAMM-CONTAINER
+   5. BERUFSERFAHRUNG UND D3.JS DIAGRAMM-CONTAINER
    ========================================================================== */
 .experience-grid {
   display: grid;
@@ -315,19 +348,11 @@ html[data-theme="dark"] .btn-primary {
   margin-top: 1.5rem;
 }
 
-.station-period {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--accent-pink);
-  text-transform: uppercase;
-  margin-bottom: 0.25rem;
-}
-
-.station-company {
-  font-size: 0.95rem;
+.station-sub {
+  font-size: 0.88rem;
   color: var(--accent-orange);
   font-weight: 600;
+  margin-bottom: 0.75rem;
 }
 
 .skills-chart-wrapper {
@@ -354,13 +379,44 @@ html[data-theme="dark"] .btn-primary {
 }
 
 /* ==========================================================================
-   6. AUSBILDUNG & GITHUB: FILTER, KARTEN-GRID & PAGINATION
+   6. AUSBILDUNGS-STUFEN, MODUL-KARTEN UND PAGINATION
    ========================================================================== */
-.filter-group {
-  display: flex;
-  gap: 0.75rem;
-  margin: 1.5rem 0;
-  flex-wrap: wrap;
+.education-stage {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.education-stage:first-of-type {
+  margin-top: 1.5rem;
+  padding-top: 0;
+  border-top: none;
+}
+
+.stage-header {
+  margin-bottom: 1.25rem;
+}
+
+.stage-header h3 {
+  font-size: 1.35rem;
+  color: var(--accent-yellow);
+  margin-bottom: 0.25rem;
+}
+
+/* Projekt- und Erfahrungs-Box innerhalb einer Modul-Karte */
+.module-project {
+  background-color: var(--bg-badge);
+  border-left: 3px solid var(--accent-orange);
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-top: 0.75rem;
+  font-size: 0.92rem;
+}
+
+.module-project strong {
+  color: var(--accent-orange);
+  display: block;
+  margin-bottom: 0.2rem;
 }
 
 .filter-btn {
@@ -371,22 +427,17 @@ html[data-theme="dark"] .btn-primary {
   border-radius: var(--radius);
   cursor: pointer;
   font-size: 0.95rem;
+  font-weight: 500;
 }
 
-.filter-btn:hover {
+.filter-btn:hover:not(:disabled) {
   border-color: var(--accent-purple);
+  color: var(--accent-purple);
 }
 
-/* Aktiver Filter-Button */
-.filter-btn.active {
-  background-color: var(--accent-purple);
-  color: #ffffff;
-  border-color: var(--accent-purple);
-  font-weight: 600;
-}
-
-html[data-theme="dark"] .filter-btn.active {
-  color: #282a36;
+.filter-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 /* 2-spaltiges Grid für Karten auf dem Desktop */
@@ -396,7 +447,7 @@ html[data-theme="dark"] .filter-btn.active {
   gap: 1.5rem;
 }
 
-/* Einzelne Karte (Beruf, Ausbildung & GitHub-Repos) */
+/* Einzelne Karte (Beruf, Modul und GitHub-Repos) */
 .project-card {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -408,10 +459,11 @@ html[data-theme="dark"] .filter-btn.active {
   box-shadow: var(--card-shadow);
 }
 
-.project-card h3 {
-  color: var(--accent-cyan);
-  font-size: 1.25rem;
-  margin-bottom: 0.4rem;
+.project-card h3,
+.project-card h4 {
+  color: var(--accent-yellow);
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
 }
 
 .project-meta {
@@ -427,7 +479,7 @@ html[data-theme="dark"] .filter-btn.active {
   border-radius: 4px;
   background-color: var(--bg-badge);
   border: 1px solid var(--border-color);
-  color: var(--accent-green);
+  color: var(--accent-purple);
   font-weight: 500;
 }
 
@@ -452,11 +504,11 @@ html[data-theme="dark"] .filter-btn.active {
   justify-content: center;
   align-items: center;
   gap: 0.75rem;
-  margin-top: 2rem;
+  margin-top: 1.25rem;
 }
 
 /* ==========================================================================
-   7. KONTAKTFORMULAR & VALIDIERUNG
+   7. KONTAKTFORMULAR UND VALIDIERUNG
    ========================================================================== */
 .contact-form {
   max-width: 650px;
@@ -487,7 +539,6 @@ html[data-theme="dark"] .filter-btn.active {
   font-size: 1rem;
 }
 
-/* Fokus-Zustand beim Reinklicken ins Textfeld */
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
@@ -495,7 +546,6 @@ html[data-theme="dark"] .filter-btn.active {
   border-color: var(--accent-purple);
 }
 
-/* Fehler-Styling bei ungültiger Eingabe */
 .form-group input.input-error,
 .form-group select.input-error,
 .form-group textarea.input-error {
@@ -513,7 +563,7 @@ html[data-theme="dark"] .filter-btn.active {
 .form-status {
   margin-top: 1rem;
   font-weight: 600;
-  color: var(--accent-green);
+  color: var(--accent-yellow);
 }
 
 /* ==========================================================================
@@ -522,6 +572,7 @@ html[data-theme="dark"] .filter-btn.active {
 .site-footer {
   padding: 2rem 0;
   background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
 }
 
 .footer-inner {
@@ -545,7 +596,7 @@ html[data-theme="dark"] .filter-btn.active {
 }
 
 /* ==========================================================================
-   9. RESPONSIVE DESIGN (MEDIA QUERIES FÜR TABLET & MOBILE < 768px)
+   9. RESPONSIVE DESIGN (MEDIA QUERIES FÜR TABLET UND MOBILE < 768px)
    ========================================================================== */
 @media (max-width: 768px) {
   h1 {
@@ -553,6 +604,7 @@ html[data-theme="dark"] .filter-btn.active {
   }
 
   .hero-grid,
+  .hero-buttons,
   .experience-grid,
   .projects-grid {
     grid-template-columns: 1fr;
