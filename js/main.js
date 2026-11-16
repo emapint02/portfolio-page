@@ -1,3 +1,5 @@
+import { initGitHub } from './api.js';
+
 // ==========================================================================
 // 1. DARK / LIGHT MODE UMSCHALTER
 // ==========================================================================
@@ -308,3 +310,6 @@ function setupStagePagination(gridId, paginationId, modulesArray) {
 setupStagePagination('bfh-grid', 'bfh-pagination', bfhModules);
 setupStagePagination('hftm-grid', 'hftm-pagination', hftmModules);
 setupStagePagination('efz-grid', 'efz-pagination', efzModules);
+
+initGitHub();
+
