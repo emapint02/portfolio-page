@@ -1,4 +1,5 @@
 import { initGitHub } from './api.js';
+import { initSkillsChart } from './charts.js';
 
 // ==========================================================================
 // 1. DARK / LIGHT MODE UMSCHALTER
@@ -311,5 +312,6 @@ setupStagePagination('bfh-grid', 'bfh-pagination', bfhModules);
 setupStagePagination('hftm-grid', 'hftm-pagination', hftmModules);
 setupStagePagination('efz-grid', 'efz-pagination', efzModules);
 
+// Module aus anderen Scripts aufrufen
 initGitHub();
-
+initSkillsChart();
